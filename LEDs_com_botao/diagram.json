@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "author": "João Pedro Soares Raccolto",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 25.55,
+      "left": 128.35,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -13,
+      "left": -124.8,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 54, "left": -121, "attrs": { "color": "blue" } },
+    { "type": "wokwi-led", "id": "led2", "top": 150, "left": -121, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led3", "top": 102, "left": -121, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": -67.2,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 186.35,
+      "left": -76.8,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 157.55,
+      "left": -76.8,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "btn1:2.r", "pico:GP5", "green", [ "h19.4", "v13.05" ] ],
+    [ "pico:GND.1", "btn1:1.r", "black", [ "h-34.85", "v-32.05" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0", "h19.2", "v28.8" ] ],
+    [ "r1:2", "pico:GP11", "green", [ "v0", "h18", "v48" ] ],
+    [ "led3:A", "r3:1", "green", [ "v0", "h19.2" ] ],
+    [ "r3:2", "pico:GP12", "green", [ "v0", "h8.4", "v19.2" ] ],
+    [ "led2:A", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "pico:GP13", "green", [ "v0" ] ],
+    [ "pico:GND.4", "led2:C", "black", [ "h0" ] ],
+    [ "led3:C", "led2:C", "black", [ "v0", "h-9.2", "v57.6", "h9.6" ] ],
+    [ "led1:C", "led3:C", "black", [ "v0", "h-9.2", "v48" ] ]
+  ],
+  "dependencies": {}
+}
